@@ -1,18 +1,37 @@
-import Card from '@/components/Card'
+import Head from 'next/head'
+
 import Header from '@/components/Header'
 import Input from '@/components/Search'
-import Head from 'next/head'
+import Card from '@/components/Card'
+import Filter from '@/components/Filter'
 
 import styled from 'styled-components'
 
 const Container = styled.div`
-  max-width: 1450px;
+  max-width: 1300px;
+  /* max-width: 1460px; */
   margin: 50px auto;
   padding: 0px 10px;
   /* border: 1px solid black; */
 `
 
+const SearchAndFilterContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`
+
+const CardContainer = styled.div`
+  /* border: 1px solid black; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 74px;
+  margin-top: 50px;
+`
+
 export default function Home() {
+  const cards = [1, 2, 3, 4, 5]
+
   return (
     <>
       <Head>
@@ -25,9 +44,16 @@ export default function Home() {
       <Header />
 
       <Container>
-        <Input type="text" placeholder="Search for a country..." />
+        <SearchAndFilterContainer>
+          <Input type="text" placeholder="Search for a country..." />
+          <Filter />
+        </SearchAndFilterContainer>
 
-        <Card />
+        <CardContainer>
+          {cards.map((id, item) => (
+            <Card key={id} />
+          ))}
+        </CardContainer>
       </Container>
     </>
   )

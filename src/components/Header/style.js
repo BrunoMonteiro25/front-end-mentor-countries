@@ -9,7 +9,7 @@ export const Container = styled.div`
 `
 
 export const Details = styled.div`
-  max-width: 1450px;
+  max-width: 1300px;
   margin: 0 auto;
   display: flex;
   align-items: center;

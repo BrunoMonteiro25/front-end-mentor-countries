@@ -1,13 +1,17 @@
 import styled from 'styled-components'
+import Link from 'next/link'
 
-export const CardContainer = styled.div`
+export const Container = styled.div`
   width: 264px;
   height: 336px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
-  margin-top: 50px;
   font-family: 'Nunito Sans', sans-serif;
+`
+
+export const LinkStyled = styled(Link)`
+  color: inherit;
 `
 
 export const TopSection = styled.div`
@@ -23,7 +27,7 @@ export const BottomSection = styled.div`
 `
 
 export const Title = styled.h3`
-  margin: 24px 24px 20px 24px;
+  padding: 24px 24px 14px 24px;
 `
 
 export const Details = styled.div`

@@ -5,9 +5,10 @@ export const InputContainer = styled.div`
   align-items: center;
   width: 480px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 15px 20px;
   background-color: #fff;
+  height: 55px;
 
   svg {
     margin-right: 20px;
