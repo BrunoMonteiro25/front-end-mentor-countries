@@ -1,14 +1,16 @@
+import Card from '@/components/Card'
 import Header from '@/components/Header'
+import Input from '@/components/Search'
 import Head from 'next/head'
 
 import styled from 'styled-components'
 
-// const Title = styled.h1`
-//   font-size: 2rem;
-//   color: #333;
-//   font-family: 'Nunito Sans', sans-serif;
-//   font-weight: 600;
-// `
+const Container = styled.div`
+  max-width: 1450px;
+  margin: 50px auto;
+  padding: 0px 10px;
+  /* border: 1px solid black; */
+`
 
 export default function Home() {
   return (
@@ -20,9 +22,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
-        <Header />
-      </div>
+      <Header />
+
+      <Container>
+        <Input type="text" placeholder="Search for a country..." />
+
+        <Card />
+      </Container>
     </>
   )
 }

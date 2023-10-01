@@ -2,19 +2,21 @@ import styled from 'styled-components'
 import Link from 'next/link'
 
 export const Container = styled.div`
-  width: 100%;
+  width: 100% !important;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  /* border: 1px solid black; */
 `
 
 export const Details = styled.div`
   max-width: 1450px;
-  margin: 20px auto;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 800;
-  padding: 0px 10px 20px 10px;
+  padding: 20px 10px 20px 10px;
   /* border: 1px solid black; */
 
   h1 {
