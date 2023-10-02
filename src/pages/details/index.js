@@ -6,12 +6,13 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 
 import { BsArrowLeftShort as IconArrow } from 'react-icons/bs'
+import CardDetail from '@/components/CardDetail'
 
 const Container = styled.div`
   max-width: 1300px;
   margin: 50px auto;
   padding: 0px 10px;
-  /* border: 1px solid black; */
+  /* border: 1px solid blue; */
 `
 
 const LinkStyled = styled(Link)`
@@ -46,6 +47,8 @@ const Details = () => {
           <IconArrow />
           Back
         </LinkStyled>
+
+        <CardDetail />
       </Container>
     </>
   )
