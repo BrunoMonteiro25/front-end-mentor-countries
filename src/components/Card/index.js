@@ -7,31 +7,42 @@ import {
   Details,
   LinkStyled,
 } from './style'
+
 import Image from 'next/image'
 
-const Card = () => {
+import { useCountryContext } from '@/contexts/CountryContext'
+
+const Card = ({ item }) => {
+  const { setCountry } = useCountryContext()
+
+  const srcImage = item.flags.svg
+
+  const handleCardClick = () => {
+    setCountry(item)
+  }
+
   return (
     <Container>
-      <LinkStyled href="/details">
+      <LinkStyled href="/details" onClick={handleCardClick}>
         <TopSection>
           <Image
-            src="https://flagcdn.com/de.svg"
-            alt="Germany Flag"
+            src={srcImage}
+            alt={item.name.common}
             width={264}
             height={160}
           />
         </TopSection>
 
         <BottomSection>
-          <Title>Germany</Title>
+          <Title>{item.name.common}</Title>
           <Details>
-            <span>Population:</span> 10.000.000
+            <span>Population:</span> {item.population}
           </Details>
           <Details>
-            <span>Region:</span> Europe
+            <span>Region:</span> {item.region}
           </Details>
           <Details>
-            <span>Capital:</span> Berlin
+            <span>Capital:</span> {item.capital}
           </Details>
         </BottomSection>
       </LinkStyled>

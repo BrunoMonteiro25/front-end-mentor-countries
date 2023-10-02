@@ -7,6 +7,8 @@ import Filter from '@/components/Filter'
 
 import styled from 'styled-components'
 
+import { useCountryContext } from '@/contexts/CountryContext'
+
 const Container = styled.div`
   max-width: 1300px;
   /* max-width: 1460px; */
@@ -30,7 +32,8 @@ const CardContainer = styled.div`
 `
 
 export default function Home() {
-  const cards = [1, 2, 3, 4, 5]
+  // console.log(countries)
+  const { countries } = useCountryContext()
 
   return (
     <>
@@ -50,8 +53,8 @@ export default function Home() {
         </SearchAndFilterContainer>
 
         <CardContainer>
-          {cards.map((id, item) => (
-            <Card key={id} />
+          {countries.map((country, index) => (
+            <Card key={index} item={country} />
           ))}
         </CardContainer>
       </Container>
