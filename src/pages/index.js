@@ -29,6 +29,17 @@ const CardContainer = styled.div`
   flex-wrap: wrap;
   gap: 74px;
   margin-top: 50px;
+  width: 100%;
+
+  @media (max-width: 1297px) {
+    justify-content: space-evenly;
+    gap: 50px;
+  }
+
+  @media (max-width: 1225px) {
+    justify-content: space-evenly;
+    gap: 40px;
+  }
 `
 
 export default function Home() {

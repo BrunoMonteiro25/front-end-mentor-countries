@@ -8,8 +8,6 @@ import {
   LinkStyled,
 } from './style'
 
-import Image from 'next/image'
-
 import { useCountryContext } from '@/contexts/CountryContext'
 
 const Card = ({ item }) => {
@@ -24,14 +22,7 @@ const Card = ({ item }) => {
   return (
     <Container>
       <LinkStyled href="/details" onClick={handleCardClick}>
-        <TopSection>
-          <Image
-            src={srcImage}
-            alt={item.name.common}
-            width={264}
-            height={160}
-          />
-        </TopSection>
+        <TopSection imageUrl={srcImage} />
 
         <BottomSection>
           <Title>{item.name.common}</Title>

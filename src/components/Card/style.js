@@ -18,6 +18,9 @@ export const TopSection = styled.div`
   width: 100%;
   height: 160px;
   background-color: #fff;
+  background-image: url(${(props) => props.imageUrl});
+  background-size: cover;
+  background-position: center;
 `
 
 export const BottomSection = styled.div`

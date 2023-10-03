@@ -7,6 +7,38 @@ export const Container = styled.div`
   display: flex;
   gap: 80px;
   flex-wrap: wrap;
+
+  @media (max-width: 955px) {
+    gap: 40px;
+  }
+
+  @media (max-width: 911px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`
+
+export const TopSection = styled.div`
+  width: 560px;
+  height: 401px;
+  background-color: #fff;
+  background-image: url(${(props) => props.imageUrl});
+  background-size: cover;
+  background-position: center;
+
+  @media (max-width: 599px) {
+    width: 450px;
+  }
+
+  @media (max-width: 495px) {
+    width: 350px;
+    height: 300px;
+  }
+
+  @media (max-width: 380px) {
+    width: 250px;
+    height: 250px;
+  }
 `
 
 export const Details = styled.div`
@@ -16,6 +48,26 @@ export const Details = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @media (max-width: 1269px) {
+    margin-top: 0px;
+  }
+
+  @media (max-width: 911px) {
+    width: 560px;
+  }
+
+  @media (max-width: 599px) {
+    width: 450px;
+  }
+
+  @media (max-width: 495px) {
+    width: 350px;
+  }
+
+  @media (max-width: 380px) {
+    width: 250px;
+  }
 `
 
 export const Title = styled.div`
@@ -30,21 +82,43 @@ export const InformationsContainer = styled.div`
   gap: 80px;
   flex-wrap: wrap;
   /* border: 1px solid black; */
+
+  @media (max-width: 1299px) {
+    gap: 50px;
+  }
+
+  @media (max-width: 1269px) {
+    margin-right: 50px;
+    gap: 1px;
+  }
 `
 
 export const Informations = styled.div`
   /* border: 1px solid coral; */
-  width: max-content;
+  width: 260px;
+
+  @media (max-width: 911px) {
+    width: 600px;
+  }
 
   p {
-    width: max-content;
+    max-width: 260px; /* Defina a largura máxima desejada */
+    word-wrap: break-word; /* Permite a quebra de palavra */
     display: block;
     font-size: 16px;
     padding: 4px 0px;
+    /* border: 1px solid black; */
   }
 
   span {
     font-weight: 600;
+  }
+
+  @media (max-width: 911px) {
+    p {
+      max-width: 600px;
+      word-wrap: normal;
+    }
   }
 `
 
@@ -53,7 +127,12 @@ export const BottomDiv = styled.div`
   width: max-content;
   margin-top: 30px;
 
+  @media (max-width: 1269px) {
+    margin-top: 10px;
+  }
+
   .text {
+    max-width: 450px;
     width: max-content;
     display: flex;
     flex-wrap: wrap;
@@ -74,6 +153,11 @@ export const BottomDiv = styled.div`
     background-color: #fff;
     padding: 5px 27px;
     font-weight: 600;
-    color: #000;
+  }
+
+  @media (max-width: 1080px) {
+    .text {
+      max-width: 300px;
+    }
   }
 `

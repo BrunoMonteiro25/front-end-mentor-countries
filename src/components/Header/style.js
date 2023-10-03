@@ -23,6 +23,12 @@ export const Details = styled.div`
     color: #0d1114;
     font-size: 24px;
   }
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
 `
 
 export const LinkStyled = styled(Link)`
@@ -38,5 +44,11 @@ export const LinkStyled = styled(Link)`
     width: 12px;
     height: 12px;
     /* border: 1px solid black; */
+  }
+
+  @media (max-width: 400px) {
+    svg {
+      margin-left: 5px;
+    }
   }
 `
