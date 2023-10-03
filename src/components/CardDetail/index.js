@@ -8,7 +8,6 @@ import {
   Informations,
   BottomDiv,
 } from './style'
-import Image from 'next/image'
 
 import { useCountryContext } from '@/contexts/CountryContext'
 
@@ -36,7 +35,6 @@ const CardDetail = () => {
   return (
     <>
       <Container>
-        {/* <Image src={flags.svg} width={560} height={401} alt={name.common} /> */}
         <TopSection imageUrl={flags.svg} />
 
         <Details>

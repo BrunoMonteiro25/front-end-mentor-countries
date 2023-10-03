@@ -21,7 +21,7 @@ const Card = ({ item }) => {
 
   return (
     <Container>
-      <LinkStyled href="/details" onClick={handleCardClick}>
+      <LinkStyled href={`/details/${item.cca3}`} onClick={handleCardClick}>
         <TopSection imageUrl={srcImage} />
 
         <BottomSection>

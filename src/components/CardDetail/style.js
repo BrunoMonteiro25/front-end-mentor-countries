@@ -102,8 +102,8 @@ export const Informations = styled.div`
   }
 
   p {
-    max-width: 260px; /* Defina a largura máxima desejada */
-    word-wrap: break-word; /* Permite a quebra de palavra */
+    max-width: 260px;
+    word-wrap: break-word;
     display: block;
     font-size: 16px;
     padding: 4px 0px;
