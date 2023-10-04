@@ -167,3 +167,28 @@ export const BottomDiv = styled.div`
     }
   }
 `
+
+export const Loading = styled.div`
+  height: 40vh;
+  font-size: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .dot {
+    display: inline-block;
+    margin: 0 4px;
+    animation: loading 1.5s infinite;
+  }
+
+  @keyframes loading {
+    0%,
+    80%,
+    100% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+  }
+`

@@ -27,7 +27,7 @@ const Card = ({ item }) => {
         <BottomSection>
           <Title>{item.name.common}</Title>
           <Details>
-            <span>Population:</span> {item.population}
+            <span>Population:</span> {item.population.toLocaleString('en-US')}
           </Details>
           <Details>
             <span>Region:</span> {item.region}

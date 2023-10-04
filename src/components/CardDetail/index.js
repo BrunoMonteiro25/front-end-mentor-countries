@@ -7,17 +7,23 @@ import {
   InformationsContainer,
   Informations,
   BottomDiv,
+  Loading,
 } from './style'
 
 import { useCountryContext } from '@/contexts/CountryContext'
 import Link from 'next/link'
 
 const CardDetail = () => {
-  const { selectedCountry } = useCountryContext()
+  const { selectedCountry, countries } = useCountryContext()
 
-  // selectedCountry não é nulo antes de acessar suas propriedades
-  if (!selectedCountry) {
-    return <div>Loading...</div> // quando não houver um país selecionado
+  if (!selectedCountry || !countries.length) {
+    return (
+      <Loading>
+        <div className="dot">.</div>
+        <div className="dot">.</div>
+        <div className="dot">.</div>
+      </Loading>
+    )
   }
 
   const {
@@ -64,7 +70,9 @@ const CardDetail = () => {
               </p>
               <p>
                 <span>Population: </span>
-                {population ? population : 'Not Available'}
+                {population
+                  ? population.toLocaleString('en-US')
+                  : 'Not Available'}
               </p>
               <p>
                 <span>Region: </span>
@@ -123,11 +131,20 @@ const CardDetail = () => {
             <p className="text">
               <span>Border Countries: </span>
               {borders && borders.length > 0 ? (
-                borders.map((item, index) => (
-                  <Link href={`/details/${item}`} key={index} className="btn">
-                    {item}
-                  </Link>
-                ))
+                borders.map((item, index) => {
+                  const borderCountry = countries.find(
+                    (country) => country.cca3 === item,
+                  )
+                  const borderCountryName = borderCountry
+                    ? borderCountry.name.common
+                    : item
+
+                  return (
+                    <Link href={`/details/${item}`} key={index} className="btn">
+                      {borderCountryName}
+                    </Link>
+                  )
+                })
               ) : (
                 <p className="btn disabled">Not Available</p>
               )}

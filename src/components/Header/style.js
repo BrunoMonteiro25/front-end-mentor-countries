@@ -19,7 +19,7 @@ export const Details = styled.div`
   padding: 20px 10px 20px 10px;
   /* border: 1px solid black; */
 
-  h1 {
+  .logo {
     color: #0d1114;
     font-size: 24px;
   }
