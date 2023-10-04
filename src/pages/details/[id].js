@@ -9,6 +9,7 @@ import { BsArrowLeftShort as IconArrow } from 'react-icons/bs'
 import CardDetail from '@/components/CardDetail'
 import { useRouter } from 'next/router'
 import { useCountryContext } from '@/contexts/CountryContext'
+import Head from 'next/head'
 
 const Container = styled.div`
   max-width: 1300px;
@@ -61,6 +62,10 @@ const Details = () => {
 
   return (
     <>
+      <Head>
+        <title>{selectedCountry?.name.common} | Countries</title>
+        <link rel="icon" href={selectedCountry?.flags.svg} />
+      </Head>
       <Header />
 
       <Container>
