@@ -10,6 +10,7 @@ import {
 } from './style'
 
 import { useCountryContext } from '@/contexts/CountryContext'
+import Link from 'next/link'
 
 const CardDetail = () => {
   const { selectedCountry } = useCountryContext()
@@ -123,12 +124,12 @@ const CardDetail = () => {
               <span>Border Countries: </span>
               {borders && borders.length > 0 ? (
                 borders.map((item, index) => (
-                  <p key={index} className="btn">
+                  <Link href={`/details/${item}`} key={index} className="btn">
                     {item}
-                  </p>
+                  </Link>
                 ))
               ) : (
-                <p className="btn">Not Available</p>
+                <p className="btn disabled">Not Available</p>
               )}
             </p>
           </BottomDiv>

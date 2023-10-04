@@ -23,9 +23,17 @@ export const CountryProvider = ({ children }) => {
     }
 
     fetchData()
+
+    // Carregar país selecionado do localStorage ao inicializar
+    const savedCountry = JSON.parse(localStorage.getItem('selectedCountry'))
+    if (savedCountry) {
+      setSelectedCountry(savedCountry)
+    }
   }, [])
 
   const setCountry = (country) => {
+    // Salvar país selecionado no localStorage
+    localStorage.setItem('selectedCountry', JSON.stringify(country))
     setSelectedCountry(country)
   }
 

@@ -153,6 +153,12 @@ export const BottomDiv = styled.div`
     background-color: #fff;
     padding: 5px 27px;
     font-weight: 600;
+    color: inherit;
+  }
+
+  .disabled {
+    cursor: no-drop;
+    opacity: 0.7;
   }
 
   @media (max-width: 1080px) {

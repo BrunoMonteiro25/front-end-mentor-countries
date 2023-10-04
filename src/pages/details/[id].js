@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import styled from 'styled-components'
 
@@ -7,6 +7,8 @@ import Header from '@/components/Header'
 
 import { BsArrowLeftShort as IconArrow } from 'react-icons/bs'
 import CardDetail from '@/components/CardDetail'
+import { useRouter } from 'next/router'
+import { useCountryContext } from '@/contexts/CountryContext'
 
 const Container = styled.div`
   max-width: 1300px;
@@ -19,7 +21,6 @@ const LinkStyled = styled(Link)`
   color: inherit;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   width: 136px;
   padding: 9px 0px;
   gap: 4px;
@@ -38,6 +39,26 @@ const LinkStyled = styled(Link)`
 `
 
 const Details = () => {
+  const router = useRouter()
+  const { id } = router.query
+  const { countries, setCountry, selectedCountry } = useCountryContext()
+
+  useEffect(() => {
+    // Verifica se o 'id' está definido e não é igual ao país já selecionado
+    if (id && id !== selectedCountry?.cca3) {
+      // Encontra o país nos dados já carregados
+      const countryData = countries.find((country) => country.cca3 === id)
+
+      // Se o país for encontrado, define como o país selecionado
+      if (countryData) {
+        setCountry(countryData)
+      } else {
+        // Se o país não for encontrado
+        console.error(`País com o ID '${id}' não encontrado.`)
+      }
+    }
+  }, [id, countries, selectedCountry, setCountry])
+
   return (
     <>
       <Header />
