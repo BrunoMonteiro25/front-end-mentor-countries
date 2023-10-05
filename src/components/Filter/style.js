@@ -9,10 +9,10 @@ export const DropdownButton = styled.button`
   width: 200px;
   height: 100%;
   padding: 12px 24px;
-  background-color: #fff;
+  background-color: ${(props) =>
+    props.theme === 'light' ? '#fff' : '#2B3743'};
   border: none;
   cursor: pointer;
-  font-family: 'Nunito Sans', sans-serif;
   font-weight: 600;
   font-size: 14px;
   border-radius: 8px;
@@ -20,6 +20,7 @@ export const DropdownButton = styled.button`
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  color: ${(props) => (props.theme === 'light' ? '#0d1114' : '#fff')};
 `
 
 export const DropdownOptions = styled.div`
@@ -27,14 +28,15 @@ export const DropdownOptions = styled.div`
   position: absolute;
   width: 100%;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  font-family: 'Nunito Sans', sans-serif;
   font-weight: 600;
   font-size: 14px;
   border-radius: 8px;
+  color: ${(props) => (props.theme === 'light' ? '#0d1114' : '#fff')};
 `
 
 export const Option = styled.div`
-  background-color: #fff;
+  background-color: ${(props) =>
+    props.theme === 'light' ? '#fff' : '#2B3743'};
   cursor: pointer;
   padding: 5px 24px;
 
@@ -49,6 +51,7 @@ export const Option = styled.div`
   }
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: ${(props) =>
+      props.theme === 'light' ? '#f5f5f5' : '#344556'};
   }
 `

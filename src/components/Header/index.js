@@ -1,20 +1,27 @@
 import React from 'react'
-import { Container, Details, LinkStyled } from './style'
+import { Container, Details, LinkLogo, LinkStyled } from './style'
 
 import { BsMoon } from 'react-icons/bs'
-import Link from 'next/link'
+import { BsSun } from 'react-icons/bs'
+import { useTheme } from '@/contexts/ThemeContext'
 
 const Header = () => {
-  return (
-    <Container>
-      <Details>
-        <Link href="/" className="logo">
-          Where in the world?
-        </Link>
+  const { theme, toggleTheme } = useTheme()
 
-        <LinkStyled href="/">
-          <BsMoon />
-          Dark Mode
+  return (
+    <Container theme={theme}>
+      <Details>
+        <LinkLogo href="/" theme={theme}>
+          Where in the world?
+        </LinkLogo>
+
+        <LinkStyled onClick={toggleTheme} theme={theme}>
+          {theme === 'light' ? (
+            <BsMoon />
+          ) : (
+            <BsSun style={{ width: '15px', height: '15px' }} />
+          )}
+          {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
         </LinkStyled>
       </Details>
     </Container>

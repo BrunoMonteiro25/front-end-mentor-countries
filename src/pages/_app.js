@@ -1,10 +1,14 @@
 import { CountryProvider } from '@/contexts/CountryContext'
-import '@/styles/globals.css'
+import { ThemeProvider } from '@/contexts/ThemeContext'
+import { GlobalStyle } from '@/styles/GlobalStyle'
 
 export default function App({ Component, pageProps }) {
   return (
     <CountryProvider>
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </CountryProvider>
   )
 }

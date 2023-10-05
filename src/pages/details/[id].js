@@ -11,6 +11,8 @@ import { useRouter } from 'next/router'
 import { useCountryContext } from '@/contexts/CountryContext'
 import Head from 'next/head'
 
+import { useTheme } from '@/contexts/ThemeContext'
+
 const Container = styled.div`
   max-width: 1300px;
   margin: 50px auto;
@@ -19,18 +21,18 @@ const Container = styled.div`
 `
 
 const LinkStyled = styled(Link)`
-  color: inherit;
+  color: ${(props) => (props.theme === 'dark' ? '#fff' : '#0d1114')};
   display: flex;
   align-items: center;
   width: 136px;
   padding: 9px 0px;
   gap: 4px;
-  font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
   font-weight: 600;
   border-radius: 8px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: ${(props) =>
+    props.theme === 'light' ? '#fff' : '#2B3743'};
 
   svg {
     width: 25px;
@@ -43,6 +45,8 @@ const Details = () => {
   const router = useRouter()
   const { id } = router.query
   const { countries, setCountry, selectedCountry } = useCountryContext()
+
+  const { theme } = useTheme()
 
   useEffect(() => {
     // Verifica se o 'id' está definido e não é igual ao país já selecionado
@@ -69,7 +73,7 @@ const Details = () => {
       <Header />
 
       <Container>
-        <LinkStyled href="/">
+        <LinkStyled href="/" theme={theme}>
           <IconArrow />
           Back
         </LinkStyled>

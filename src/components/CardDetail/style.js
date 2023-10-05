@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
+import Link from 'next/link'
+
 export const Container = styled.div`
   /* border: 1px solid black; */
   margin-top: 50px;
-  font-family: 'Nunito Sans', sans-serif;
   display: flex;
   gap: 80px;
   flex-wrap: wrap;
@@ -21,7 +22,6 @@ export const Container = styled.div`
 export const TopSection = styled.div`
   width: 560px;
   height: 401px;
-  background-color: #fff;
   background-image: url(${(props) => props.imageUrl});
   background-size: cover;
   background-position: center;
@@ -75,6 +75,7 @@ export const Title = styled.div`
   font-weight: 800;
   font-size: 32px;
   display: block;
+  color: ${(props) => (props.theme === 'dark' ? '#fff' : '#0d1114')};
 `
 
 export const InformationsContainer = styled.div`
@@ -96,6 +97,7 @@ export const InformationsContainer = styled.div`
 export const Informations = styled.div`
   /* border: 1px solid coral; */
   width: 260px;
+  color: ${(props) => (props.theme === 'dark' ? '#fff' : '#0d1114')};
 
   @media (max-width: 911px) {
     width: 600px;
@@ -166,6 +168,16 @@ export const BottomDiv = styled.div`
       max-width: 300px;
     }
   }
+`
+
+export const LinkStyled = styled(Link)`
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  background-color: ${(props) =>
+    props.theme === 'light' ? '#fff' : '#2B3743'};
+  padding: 5px 27px;
+  font-weight: 600;
+  color: ${(props) => (props.theme === 'dark' ? '#fff' : '#0d1114')};
 `
 
 export const Loading = styled.div`

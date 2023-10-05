@@ -7,17 +7,15 @@ export const Container = styled.div`
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
-  font-family: 'Nunito Sans', sans-serif;
 `
 
 export const LinkStyled = styled(Link)`
-  color: inherit;
+  color: ${(props) => (props.theme === 'dark' ? '#fff' : '#0d1114')};
 `
 
 export const TopSection = styled.div`
   width: 100%;
   height: 160px;
-  background-color: #fff;
   background-image: url(${(props) => props.imageUrl});
   background-size: cover;
   background-position: center;
@@ -26,7 +24,8 @@ export const TopSection = styled.div`
 export const BottomSection = styled.div`
   width: 100%;
   height: calc(100% - 160px);
-  background-color: #fff;
+  background-color: ${(props) =>
+    props.theme === 'light' ? '#fff' : '#2B3743'};
 `
 
 export const Title = styled.h3`

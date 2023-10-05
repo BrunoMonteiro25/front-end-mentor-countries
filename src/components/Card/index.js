@@ -9,9 +9,11 @@ import {
 } from './style'
 
 import { useCountryContext } from '@/contexts/CountryContext'
+import { useTheme } from '@/contexts/ThemeContext'
 
 const Card = ({ item }) => {
   const { setCountry } = useCountryContext()
+  const { theme } = useTheme()
 
   const srcImage = item.flags.svg
 
@@ -21,10 +23,14 @@ const Card = ({ item }) => {
 
   return (
     <Container>
-      <LinkStyled href={`/details/${item.cca3}`} onClick={handleCardClick}>
+      <LinkStyled
+        href={`/details/${item.cca3}`}
+        onClick={handleCardClick}
+        theme={theme}
+      >
         <TopSection imageUrl={srcImage} />
 
-        <BottomSection>
+        <BottomSection theme={theme}>
           <Title>{item.name.common}</Title>
           <Details>
             <span>Population:</span> {item.population.toLocaleString('en-US')}

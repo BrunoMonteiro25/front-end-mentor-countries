@@ -8,13 +8,17 @@ import {
   Informations,
   BottomDiv,
   Loading,
+  LinkStyled,
 } from './style'
 
 import { useCountryContext } from '@/contexts/CountryContext'
+import { useTheme } from '@/contexts/ThemeContext'
+
 import Link from 'next/link'
 
 const CardDetail = () => {
   const { selectedCountry, countries } = useCountryContext()
+  const { theme } = useTheme()
 
   if (!selectedCountry || !countries.length) {
     return (
@@ -45,12 +49,12 @@ const CardDetail = () => {
         <TopSection imageUrl={flags.svg} />
 
         <Details>
-          <Title>
+          <Title theme={theme}>
             <p>{name.common}</p>
           </Title>
 
           <InformationsContainer>
-            <Informations>
+            <Informations theme={theme}>
               <p>
                 <span>Native Name: </span>
                 {name.nativeName && Object.keys(name.nativeName).length > 0
@@ -87,7 +91,7 @@ const CardDetail = () => {
                 {capital ? capital : 'Not Available'}
               </p>
             </Informations>
-            <Informations>
+            <Informations theme={theme}>
               <p>
                 <span>Top Level Domain: </span>
                 {tld ? tld : 'Not Available'}
@@ -129,7 +133,9 @@ const CardDetail = () => {
 
           <BottomDiv>
             <p className="text">
-              <span>Border Countries: </span>
+              <span style={{ color: theme === 'dark' ? '#fff' : '#0d1114' }}>
+                Border Countries:
+              </span>
               {borders && borders.length > 0 ? (
                 borders.map((item, index) => {
                   const borderCountry = countries.find(
@@ -140,9 +146,13 @@ const CardDetail = () => {
                     : item
 
                   return (
-                    <Link href={`/details/${item}`} key={index} className="btn">
+                    <LinkStyled
+                      href={`/details/${item}`}
+                      key={index}
+                      theme={theme}
+                    >
                       {borderCountryName}
-                    </Link>
+                    </LinkStyled>
                   )
                 })
               ) : (
