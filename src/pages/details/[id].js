@@ -44,25 +44,27 @@ const LinkStyled = styled(Link)`
 const Details = () => {
   const router = useRouter()
   const { id } = router.query
-  const { countries, setCountry, selectedCountry } = useCountryContext()
+  const {
+    countries,
+    setCountry,
+    selectedCountry,
+    fetchData,
+  } = useCountryContext()
 
   const { theme } = useTheme()
 
   useEffect(() => {
-    // Verifica se o 'id' está definido e não é igual ao país já selecionado
-    if (id && id !== selectedCountry?.cca3) {
-      // Encontra o país nos dados já carregados
+    if (id) {
       const countryData = countries.find((country) => country.cca3 === id)
 
-      // Se o país for encontrado, define como o país selecionado
-      if (countryData) {
-        setCountry(countryData)
+      if (!countryData) {
+        // Se o país não estiver nos dados carregados, recarregue os dados
+        fetchData()
       } else {
-        // Se o país não for encontrado
-        console.error(`País com o ID '${id}' não encontrado.`)
+        setCountry(countryData)
       }
     }
-  }, [id, countries, selectedCountry, setCountry])
+  }, [id, countries, setCountry, fetchData])
 
   return (
     <>

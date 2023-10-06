@@ -10,18 +10,19 @@ export const useCountryContext = () => {
 export const CountryProvider = ({ children }) => {
   const [countries, setCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState(null)
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('https://restcountries.com/v3.1/all')
+      setCountries(response.data)
+    } catch (error) {
+      console.error('Erro ao fazer a solicitação:', error.message)
+      setCountries([])
+    }
+  }
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://restcountries.com/v3.1/all')
-        setCountries(response.data)
-      } catch (error) {
-        console.error('Erro ao fazer a solicitação:', error.message)
-        setCountries([])
-      }
-    }
-
     fetchData()
 
     // Carregar país selecionado do localStorage ao inicializar
@@ -37,8 +38,33 @@ export const CountryProvider = ({ children }) => {
     setSelectedCountry(country)
   }
 
+  const searchCountry = async (query) => {
+    setSearchQuery(query)
+
+    try {
+      const response = await axios.get(
+        `https://restcountries.com/v3.1/name/${query}`,
+      )
+
+      setCountries(response.data)
+    } catch (error) {
+      console.error('Erro ao fazer a solicitação de pesquisa:', error.message)
+      setCountries([])
+    }
+  }
+
   return (
-    <CountryContext.Provider value={{ countries, selectedCountry, setCountry }}>
+    <CountryContext.Provider
+      value={{
+        countries,
+        selectedCountry,
+        setCountry,
+        searchCountry,
+        fetchData,
+        searchQuery,
+        setSearchQuery,
+      }}
+    >
       {children}
     </CountryContext.Provider>
   )

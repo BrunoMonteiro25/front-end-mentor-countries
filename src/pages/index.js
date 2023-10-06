@@ -43,7 +43,11 @@ const CardContainer = styled.div`
 `
 
 export default function Home() {
-  const { countries } = useCountryContext()
+  const { countries, searchCountry, searchQuery } = useCountryContext()
+
+  const handleSearch = (value) => {
+    searchCountry(value)
+  }
 
   return (
     <>
@@ -56,8 +60,12 @@ export default function Home() {
 
       <Container>
         <SearchAndFilterContainer>
-          <Input type="text" placeholder="Search for a country..." />
-          <Filter />
+          <Input
+            type="text"
+            placeholder="Search for a country..."
+            onChange={(e) => handleSearch(e.target.value)}
+          />
+          {!searchQuery && <Filter />}
         </SearchAndFilterContainer>
 
         <CardContainer>
