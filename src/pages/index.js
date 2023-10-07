@@ -43,11 +43,15 @@ const CardContainer = styled.div`
 `
 
 export default function Home() {
-  const { countries, searchCountry, searchQuery } = useCountryContext()
+  const { countries, setSearchQuery, searchQuery } = useCountryContext()
 
   const handleSearch = (value) => {
-    searchCountry(value)
+    setSearchQuery(value)
   }
+
+  const filteredCountries = countries.filter((country) =>
+    country.name.common.toLowerCase().includes(searchQuery.toLowerCase()),
+  )
 
   return (
     <>
@@ -68,11 +72,17 @@ export default function Home() {
           {!searchQuery && <Filter />}
         </SearchAndFilterContainer>
 
-        <CardContainer>
-          {countries.map((country, index) => (
-            <Card key={index} item={country} />
-          ))}
-        </CardContainer>
+        {filteredCountries.length > 0 ? (
+          <CardContainer>
+            {filteredCountries.map((country, index) => (
+              <Card key={index} item={country} />
+            ))}
+          </CardContainer>
+        ) : (
+          <p style={{ color: '#ff0000', marginTop: '20px' }}>
+            {`No results found for: ${searchQuery}`}
+          </p>
+        )}
       </Container>
     </>
   )

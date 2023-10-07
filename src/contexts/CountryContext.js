@@ -38,28 +38,12 @@ export const CountryProvider = ({ children }) => {
     setSelectedCountry(country)
   }
 
-  const searchCountry = async (query) => {
-    setSearchQuery(query)
-
-    try {
-      const response = await axios.get(
-        `https://restcountries.com/v3.1/name/${query}`,
-      )
-
-      setCountries(response.data)
-    } catch (error) {
-      console.error('Erro ao fazer a solicitação de pesquisa:', error.message)
-      setCountries([])
-    }
-  }
-
   return (
     <CountryContext.Provider
       value={{
         countries,
         selectedCountry,
         setCountry,
-        searchCountry,
         fetchData,
         searchQuery,
         setSearchQuery,

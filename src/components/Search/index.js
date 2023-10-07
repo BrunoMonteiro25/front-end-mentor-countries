@@ -7,20 +7,11 @@ import { useCountryContext } from '@/contexts/CountryContext'
 
 const Input = ({ type, placeholder }) => {
   const { theme } = useTheme()
-  const {
-    searchCountry,
-    fetchData,
-    searchQuery,
-    setSearchQuery,
-  } = useCountryContext()
+  const { fetchData, setSearchQuery, searchQuery } = useCountryContext()
 
   useEffect(() => {
-    if (searchQuery.trim() === '') {
-      fetchData()
-    } else {
-      searchCountry(searchQuery)
-    }
-  }, [searchQuery, fetchData, searchCountry])
+    fetchData()
+  }, [fetchData])
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value)
