@@ -49,8 +49,12 @@ export default function Home() {
     setSearchQuery(value)
   }
 
-  const filteredCountries = countries.filter((country) =>
-    country.name.common.toLowerCase().includes(searchQuery.toLowerCase()),
+  const filteredCountries = countries.filter(
+    (country) =>
+      country.name.common
+        .toLowerCase()
+        .includes(searchQuery.trim().toLowerCase()) ||
+      searchQuery.trim() === '',
   )
 
   return (
@@ -69,7 +73,7 @@ export default function Home() {
             placeholder="Search for a country..."
             onChange={(e) => handleSearch(e.target.value)}
           />
-          {!searchQuery && <Filter />}
+          {searchQuery.trim() === '' && <Filter />}
         </SearchAndFilterContainer>
 
         {filteredCountries.length > 0 ? (
