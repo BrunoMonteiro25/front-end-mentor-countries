@@ -11,6 +11,7 @@ export const CountryProvider = ({ children }) => {
   const [countries, setCountries] = useState([])
   const [selectedCountry, setSelectedCountry] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
+  const [selectedRegion, setSelectedRegion] = useState(null)
 
   const fetchData = async () => {
     try {
@@ -38,6 +39,10 @@ export const CountryProvider = ({ children }) => {
     setSelectedCountry(country)
   }
 
+  const setRegion = (region) => {
+    setSelectedRegion(region === 'All' ? null : region)
+  }
+
   return (
     <CountryContext.Provider
       value={{
@@ -47,6 +52,8 @@ export const CountryProvider = ({ children }) => {
         fetchData,
         searchQuery,
         setSearchQuery,
+        selectedRegion,
+        setRegion,
       }}
     >
       {children}

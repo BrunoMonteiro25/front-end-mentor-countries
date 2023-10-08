@@ -9,21 +9,24 @@ import {
 import { IoIosArrowDown as IconArrowDown } from 'react-icons/io'
 
 import { useTheme } from '@/contexts/ThemeContext'
+import { useCountryContext } from '@/contexts/CountryContext'
 
 const Filter = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState(null)
 
   const { theme } = useTheme()
+  const { setRegion } = useCountryContext()
 
-  const options = ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
+  const options = ['All', 'Africa', 'America', 'Asia', 'Europe', 'Oceania']
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen)
   }
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option)
+    setRegion(option)
+    setSelectedOption(option === 'All' ? null : option)
     setIsOpen(false)
   }
 

@@ -43,7 +43,12 @@ const CardContainer = styled.div`
 `
 
 export default function Home() {
-  const { countries, setSearchQuery, searchQuery } = useCountryContext()
+  const {
+    countries,
+    setSearchQuery,
+    searchQuery,
+    selectedRegion,
+  } = useCountryContext()
 
   const handleSearch = (value) => {
     setSearchQuery(value)
@@ -51,10 +56,13 @@ export default function Home() {
 
   const filteredCountries = countries.filter(
     (country) =>
-      country.name.common
+      (country.name.common
         .toLowerCase()
         .includes(searchQuery.trim().toLowerCase()) ||
-      searchQuery.trim() === '',
+        searchQuery.trim() === '') &&
+      (!selectedRegion ||
+        selectedRegion === 'All' ||
+        country.region === selectedRegion),
   )
 
   return (
